@@ -31,12 +31,6 @@ class EnvironmentVariables {
   JWT_EXPIRATION_TIME: string;
 
   @IsString()
-  REFRESH_JWT_SECRET_KEY: string;
-
-  @IsString()
-  REFRESH_JWT_EXPIRATION_TIME: string;
-
-  @IsString()
   MONGO_URI: string;
 
   @IsString()

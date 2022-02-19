@@ -1,7 +1,5 @@
 import { ModelPaginateAndSoftDelete } from '@common/interfaces/model-paginate-and-soft-delete.interface';
-import { FirstAccessService } from '@modules/auth/interfaces/services/first-access.interface';
-import { AUTH_TYPES } from '@modules/auth/interfaces/types';
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { hash } from 'bcrypt';
 
@@ -15,8 +13,6 @@ export class CreateUserServiceImp implements CreateUserService {
   constructor(
     @InjectModel(User.name)
     private readonly userModel: ModelPaginateAndSoftDelete<UserDocument>,
-    @Inject(AUTH_TYPES.services.FirstAccessService)
-    private readonly firstAccessService: FirstAccessService,
   ) {}
 
   async execute({
@@ -33,8 +29,6 @@ export class CreateUserServiceImp implements CreateUserService {
       verified: true,
       role: 'client',
     });
-
-    // this.firstAccessService.execute({ email });
 
     return this.userModel.findById(user.id).lean();
   }
