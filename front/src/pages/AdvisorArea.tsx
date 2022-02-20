@@ -1,7 +1,8 @@
-import { Flex, Icon, Image, Text } from '@chakra-ui/react';
+import { Flex, Icon, Image, SimpleGrid, Text } from '@chakra-ui/react';
 import { AiOutlineUser } from 'react-icons/ai';
 
 import { Button } from '../components/Button';
+import { ButtonLink } from '../components/ButtonLink';
 import { Layout } from '../components/Layout';
 
 export function AdvisorArea() {
@@ -14,20 +15,18 @@ export function AdvisorArea() {
         justify="center"
         align="center"
       >
-        <Flex
-          direction={['column', 'row']}
-          gap="12"
-          justify="space-around"
-          mb="12"
-          w="full"
-        >
-          <Button
-            flex="1"
+        <SimpleGrid mb="12" columns={[1, 2, 3]} spacing="12">
+          <ButtonLink
+            to="/advisor-area/client"
             borderColor="primary.500"
             fontSize="xl"
             borderWidth="medium"
             backgroundColor="transparent"
-            p="12"
+            py="12"
+            color="gray.100"
+            _hover={{
+              backgroundColor: 'primary.900',
+            }}
           >
             <Icon
               aria-label="cliente"
@@ -39,9 +38,8 @@ export function AdvisorArea() {
               as={AiOutlineUser}
             />
             <Text>CLIENTE</Text>
-          </Button>
+          </ButtonLink>
           <Button
-            flex="1"
             borderColor="primary.500"
             borderWidth="medium"
             backgroundColor="transparent"
@@ -55,7 +53,6 @@ export function AdvisorArea() {
             </Flex>
           </Button>
           <Button
-            flex="1"
             borderColor="primary.500"
             borderWidth="medium"
             backgroundColor="transparent"
@@ -68,7 +65,8 @@ export function AdvisorArea() {
               </Text>
             </Flex>
           </Button>
-        </Flex>
+        </SimpleGrid>
+
         <Flex direction={['column', 'row']} gap="12" justify="center">
           <Flex direction="column" justify="center">
             <Image

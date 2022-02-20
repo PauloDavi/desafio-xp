@@ -23,7 +23,7 @@ export function DrawerMenu({ isOpen, btnRef, onClose }: DrawerMenuProps) {
       onClose={onClose}
       finalFocusRef={btnRef}
     >
-      <DrawerContent p="0">
+      <DrawerContent maxW="14rem" p="0">
         <DrawerCloseButton color="white" />
         <DrawerBody p="0">
           <NavBarContent />

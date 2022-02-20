@@ -25,10 +25,11 @@ export function NavBar({ navIsCloseable }: NavBarProps) {
   return (
     <>
       {!isLargerThan800 ? (
-        <Box p="2">
+        <Box>
           <IconButton
             position="absolute"
             top="0"
+            m="2"
             left="0"
             aria-label="navigation menu"
             icon={<FiMenu />}
@@ -56,7 +57,7 @@ export function NavBar({ navIsCloseable }: NavBarProps) {
                 variant="ghost"
                 color="primary.500"
                 fontSize="xx-large"
-                mr="2"
+                mr="4"
                 onClick={onOpen}
               />
 
