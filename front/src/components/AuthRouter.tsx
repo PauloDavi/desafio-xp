@@ -12,7 +12,7 @@ export function AuthRouter({ isPublic = false, element }: AuthRouterProps) {
   const navigate = useNavigate();
 
   if (isPublic && isAuthenticated) {
-    navigate('/dashboard', { replace: true });
+    navigate('/advisor-area', { replace: true });
   }
 
   if (!isPublic && !isAuthenticated) {

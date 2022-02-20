@@ -1,10 +1,8 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from 'react';
+import { createContext, useCallback, useContext, useMemo } from 'react';
+
+import { useNavigate } from 'react-router-dom';
+
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 interface User {
   name: string;
@@ -31,21 +29,28 @@ interface HandleLoginProps {
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [user, setUser] = useState<User>();
+  const navigate = useNavigate();
+
+  const [user, setUser] = useLocalStorage<User | undefined>('user', undefined);
 
   const isAuthenticated = useMemo(() => !!user, [user]);
 
-  const handleLogin = useCallback(({ email, password }: HandleLoginProps) => {
-    console.log(password);
-    setUser({
-      name: 'John Doe',
-      email,
-    });
-  }, []);
+  const handleLogin = useCallback(
+    ({ email, password }: HandleLoginProps) => {
+      console.log(password);
+      setUser({
+        name: 'Fulano',
+        email,
+      });
+      navigate('/advisor-area');
+    },
+    [navigate, setUser],
+  );
 
   const handleLogOut = useCallback(() => {
     setUser(undefined);
-  }, []);
+    navigate('/');
+  }, [navigate, setUser]);
 
   return (
     <AuthContext.Provider

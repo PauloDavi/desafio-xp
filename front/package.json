@@ -3,6 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
+    "gen:theme-typings": "chakra-cli tokens src/theme.ts",
+    "postinstall": "npm run gen:theme-typings",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
@@ -14,9 +16,12 @@
     "framer-motion": "^6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.27.1",
+    "react-icons": "^4.3.1",
     "react-router-dom": "6"
   },
   "devDependencies": {
+    "@chakra-ui/cli": "^1.8.1",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "@typescript-eslint/eslint-plugin": "^5.12.0",
