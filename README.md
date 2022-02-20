@@ -44,16 +44,48 @@ Nosso produto busca apoiar o assessor em entregar a melhor experiência ao seu c
 
 As Estórias criadas a partir do épico "Visualização de desempenho de mercado (concorrentes)" foram:
 1. Visualizar o cliente
-  1.1. Procurar o cliente
-    1.1.1. Ter campo de procura: Como assessor, eu qro procurar um cliente na base de dados, para utilizar suas informações;
-    1.1.2. Buscar pelo CPF ou nome: Como assessor, eu quero encontrar o cliente específico, para acessar os dados dele;
-    1.1.3. Selecionar o cliente: Como assessor, eu quero escolher um cliente, para verificar seus dados na tela;
-  1.2. Ver as informações:
-    1.2.1. Dados do cliente: como assessor, eu quero ver os dados dos cliente, para ter uma visão estratégica dos seus dados;
+1.1. Procurar o cliente
+1.1.1. Ter campo de procura: Como assessor, eu qro procurar um cliente na base de dados, para utilizar suas informações;
+1.1.2. Buscar pelo CPF ou nome: Como assessor, eu quero encontrar o cliente específico, para acessar os dados dele;
+1.1.3. Selecionar o cliente: Como assessor, eu quero escolher um cliente, para verificar seus dados na tela;
+1.2. Ver as informações:
+1.2.1. Dados do cliente: como assessor, eu quero ver os dados dos cliente, para ter uma visão estratégica dos seus dados;
 2. Oferta de concorrentes
-  2.1. Concorrentes:
-    2.1.1. Botão para acessar os concorrentes: como assessor, eu quero acessar os dados dos concorrentes, para entender a melhor oferta para meu cliente;
-    2.1.2. Carregar os dados do cliente nos concorrentes: como assessor, eu quero ter a comparação dos produtos semelhantes dos concorrentes, para averiguar oportunidades de negócio pela XP com esse cliente.
-   2.2. Comparar
-   2.2.1. O que ele não tem: como assessor, eu quero ver quais produtos da xp o cliente não possui em semelhança com os concorrentes, para conseguir ofertar para ele as opções
+2.1. Concorrentes:
+2.1.1. Botão para acessar os concorrentes: como assessor, eu quero acessar os dados dos concorrentes, para entender a melhor oferta para meu cliente;
+2.1.2. Carregar os dados do cliente nos concorrentes: como assessor, eu quero ter a comparação dos produtos semelhantes dos concorrentes, para averiguar oportunidades de negócio pela XP com esse cliente.
+2.2. Comparar
+2.2.1. O que ele não tem: como assessor, eu quero ver quais produtos da xp o cliente não possui em semelhança com os concorrentes, para conseguir ofertar para ele as opções
+
+### Design do produto:
+#### Home:
+![Splash_2](https://user-images.githubusercontent.com/88851999/154858416-9f61e02e-90a0-4112-818d-a4338879cec3.png)
+
+#### Acesso:
+![Assessor_x_Escritorios_1](https://user-images.githubusercontent.com/88851999/154858817-b5c16b9a-191f-44de-94c5-4b898086e8c8.png)
+
+#### Entrar:
+![Login_1](https://user-images.githubusercontent.com/88851999/154858918-d6458371-b108-4212-9e27-051dc78e6bf1.png)
+
+#### Criar conta:
+![Criar_Contasonnar-signup_1](https://user-images.githubusercontent.com/88851999/154858880-731e74ac-61f5-41cb-9d74-4fd7d4cc2bbb.png)
+
+#### Reset senha:
+![Reset_Password_1](https://user-images.githubusercontent.com/88851999/154858881-60e191cc-bdf5-4add-ac00-5320a47afc03.png)
+![Reset_Password_Confirmation_1](https://user-images.githubusercontent.com/88851999/154858882-5957281b-95f8-4fdd-bc37-f80756cb97ac.png)
+
+#### Home:
+![Home_2](https://user-images.githubusercontent.com/88851999/154858412-1c41534b-8e21-4187-9c3e-59e17aefd410.png)
+
+#### Buscar:
+![Dashboard_2](https://user-images.githubusercontent.com/88851999/154858410-ea2fd806-0dc5-4da9-a7b2-4bb48c39219d.png)
+
+#### Buscar cliente:
+![Cliente_1](https://user-images.githubusercontent.com/88851999/154858406-bb3252af-0988-4d2e-97d0-c9f298898d52.png)
+
+#### Encontrar cliente:
+![Cliente_Busca_1](https://user-images.githubusercontent.com/88851999/154859069-0a3148e6-fe9d-4994-8d37-8e2131b8e7b8.png)
+
+#### Perfil cliente:
+![Cliente_Perfil_1](https://user-images.githubusercontent.com/88851999/154858409-cbd769c5-c672-4571-a166-feee4f273896.png)
 
