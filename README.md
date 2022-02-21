@@ -58,6 +58,7 @@ As Estórias criadas a partir do épico "Visualização de desempenho de mercado
 2.2.1. O que ele não tem: como assessor, eu quero ver quais produtos da xp o cliente não possui em semelhança com os concorrentes, para conseguir ofertar para ele as opções
 
 ### Design do produto:
+(Figma Data XP)[https://www.figma.com/proto/3iEzxgMjewnRU9e2TDHfDt/HACK-XP?node-id=7%3A651&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=4%3A320&show-proto-sidebar=1]
 #### Home:
 ![Splash_2](https://user-images.githubusercontent.com/88851999/154858416-9f61e02e-90a0-4112-818d-a4338879cec3.png)
 
@@ -91,3 +92,6 @@ As Estórias criadas a partir do épico "Visualização de desempenho de mercado
 
 ### ReadMe - Backend
 (Backend - ReadMe)[https://github.com/PauloDavi/desafio-xp/blob/main/backend/README.md]
+
+### ReadMe - Frontend
+(Frontend - ReadMe)[https://github.com/PauloDavi/desafio-xp/blob/main/front/README.md]
