@@ -1,73 +1,150 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# Backend - Data XP
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Tecnologias
+- Node
+- Nest
+- Typescript
+- Compression
+- Helmet
+- Swagger
+- Eslint
+- Prettier
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Como executar em ambiente local
 
-## Description
+Depois de clonar o repositorio instale as dependêcias
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+```
+yarn
 
-## Installation
+// or if you use npm
 
-```bash
-$ npm install
+npm install
+
 ```
 
-## Running the app
+Atualize o arquivo `.env`
 
-```bash
-# development
-$ npm run start
+```env
+// exemplo
+# default Configs
+PORT=3333
 
-# watch mode
-$ npm run start:dev
+# JWT configs
+JWT_SECRET_KEY="<top_secret>"
+JWT_EXPIRATION_TIME="30d"
 
-# production mode
-$ npm run start:prod
+# Mongo configs
+MONGO_URI="<mongo_uri>"
 ```
 
-## Test
+Depois execute:
 
-```bash
-# unit tests
-$ npm run test
+```
+yarn dev
 
-# e2e tests
-$ npm run test:e2e
+// or if you use npm
 
-# test coverage
-$ npm run test:cov
+npm run dev
+
 ```
 
-## Support
+## Documentação
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+A documentão do sawweger esta disponivel em `http://localhost:<PORT>/api`
 
-## Stay in touch
+![screencapture-localhost-3333-api-2022-02-20-21_33_34](https://user-images.githubusercontent.com/49069334/154871797-5a9085cc-54f1-400b-9593-ee6240533fb1.png)
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Observações
+- Presumimos que o aceite do usuário quanto ao seus dados para o open finance foram dado previamente em algum ambiente XP
+- Devido a um bloqueio da API disponibilizada para consumo foi necessario "mockar" os dados de usuarios e de serviços da XP, seguem os testes realizados e o retorno da API em todos os testes
 
-## License
+Retorno do Erro
+```html
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Acesso Bloqueado</title>
+   </head>
+   <body>
+      <blockquote>
+         <table border="0" cellpadding="1" width="80%">
+            <tbody>
+               <tr>
+                  <td><img src="https://www.xpi.com.br/assets/images/xp-inc-hero.png"></td>
+               </tr>
+            </tbody>
+         </table>
+      </blockquote>
+      <br><br><br>   
+      <blockquote>
+         <table border="0" cellpadding="1" width="80%">
+            <tbody>
+               <tr>
+                  <td><font face="Helvetica"><big><strong>A sua requisição foi bloqueada. Caso esteja com problemas para acessar nossos serviços, por favor entre em contato através do e-mail secops.netsec@xpi.com.br com as informações apresentadas no texto abaixo.</strong></big><br></font><br><br><font face="Helvetica"><strong>Reference ID:</strong> 0.2ed5da17.1645316274.f5a388d<br><strong>Endereço IP:</strong> 177.37.173.254<br><br></font></td>
+               </tr>
+            </tbody>
+         </table>
+      </blockquote>
+   </body>
+</html>
+```
 
-Nest is [MIT licensed](LICENSE).
+Teste 1 - utilizando axios no Node
+```ts
+const params = new URLSearchParams();
+params.append('grant_type', 'client_credentials');
+params.append(
+  'clientId',
+  'segredo',
+);
+params.append(
+  'clientSecret',
+  'segredo',
+);
+
+const { data } = await openFinancesApi.post(
+  'oauth2/v1/access-token',
+  params.toString(),
+  {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+  },
+);
+console.log(data);
+```
+
+Teste 2 - utilizando biblioteca nativa do node
+```ts
+async createToken (){
+        var options = {
+            'method': 'POST',
+            'url': 'https://openapi.xpi.com.br/oauth2/v1/access-token',
+            'headers': {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            form: {
+              'grant_type': 'client_credentials',
+              'client_id': '<your_client_id>',
+              'client_secret': '<your_client_secret>''
+            }
+          };
+          return new Promise((resolve, reject) => {
+            request(options, function (error, response) {
+                if (error) reject(error);
+                    const resultJson = JSON.parse(response.body)
+                    console.log('OLHA O TOKEN', resultJson.access_token);
+                    resolve(resultJson.access_token);
+              });
+        })
+    }
+```
+
+## A fazer
+- [ ] Resolver problema de autenticação com a API
+- [ ] Criar serviço de email para recuperação de senha
+- [ ] Utilizar streams para processamento de dados, para um grande volume de dados
+- [ ] Criar IA para outros serviços de insights
+- [ ] Revisar paramento utilizado para definir apetite de risco (atualmente esta utilizando uma margem de 10% para mais e para menos)
+- [ ] Criar serviços para novas funcionalidades descritas na dinamica feita no sequenciador de features no README da home
