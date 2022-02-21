@@ -11,7 +11,7 @@
 
 ## Como executar em ambiente local
 
-Depois de clonar o repositorio instale as dependêcias
+Depois de clonar o repositório instale as dependências
 
 ```
 yarn
@@ -22,7 +22,7 @@ npm install
 
 ```
 
-Atualize o arquivo `.env` com a url da API deste mesmo projeto
+Copie o arquivo `.env.example` para `.env` e preencha com a url da API deste mesmo projeto (caso não mude nada na API deste projeto pode manter o valor default)
 
 ```env
 // exemplo

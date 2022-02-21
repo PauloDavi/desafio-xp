@@ -12,7 +12,7 @@
 
 ## Como executar em ambiente local
 
-Depois de clonar o repositorio instale as dependêcias
+Depois de clonar o repositório instale as dependências
 
 ```
 yarn
@@ -23,7 +23,7 @@ npm install
 
 ```
 
-Atualize o arquivo `.env`
+Copie o arquivo  `.env.example` para `.env` e atualize as variáveis
 
 ```env
 // exemplo
@@ -51,13 +51,13 @@ npm run dev
 
 ## Documentação
 
-A documentão do sawweger esta disponivel em `http://localhost:<PORT>/api`
+A documentação do swagger esta disponivel em `http://localhost:<PORT>/api`
 
 ![screencapture-localhost-3333-api-2022-02-20-21_33_34](https://user-images.githubusercontent.com/49069334/154871797-5a9085cc-54f1-400b-9593-ee6240533fb1.png)
 
 ## Observações
 - Presumimos que o aceite do usuário quanto ao seus dados para o open finance foram dado previamente em algum ambiente XP
-- Devido a um bloqueio da API disponibilizada para consumo foi necessario "mockar" os dados de usuarios e de serviços da XP, seguem os testes realizados e o retorno da API em todos os testes
+- Devido a um bloqueio da API disponibilizada para consumo foi necessário "mockar" os dados de usuários e de serviços da XP, seguem os testes realizados e o retorno da API em todos os testes
 
 Retorno do Erro
 ```html
@@ -76,7 +76,7 @@ Retorno do Erro
             </tbody>
          </table>
       </blockquote>
-      <br><br><br>   
+      <br><br><br>
       <blockquote>
          <table border="0" cellpadding="1" width="80%">
             <tbody>
@@ -117,28 +117,29 @@ console.log(data);
 
 Teste 2 - utilizando biblioteca nativa do node
 ```ts
-async createToken (){
-        var options = {
-            'method': 'POST',
-            'url': 'https://openapi.xpi.com.br/oauth2/v1/access-token',
-            'headers': {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            form: {
-              'grant_type': 'client_credentials',
-              'client_id': '<your_client_id>',
-              'client_secret': '<your_client_secret>''
-            }
-          };
-          return new Promise((resolve, reject) => {
-            request(options, function (error, response) {
-                if (error) reject(error);
-                    const resultJson = JSON.parse(response.body)
-                    console.log('OLHA O TOKEN', resultJson.access_token);
-                    resolve(resultJson.access_token);
-              });
-        })
+async createToken () {
+  var options = {
+    'method': 'POST',
+    'url': 'https://openapi.xpi.com.br/oauth2/v1/access-token',
+    'headers': {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    form: {
+      'grant_type': 'client_credentials',
+      'client_id': '<your_client_id>',
+      'client_secret': '<your_client_secret>'
     }
+  };
+
+  return new Promise((resolve, reject) => {
+    request(options, function (error, response) {
+      if (error) reject(error);
+        const resultJson = JSON.parse(response.body)
+        console.log('OLHA O TOKEN', resultJson.access_token);
+        resolve(resultJson.access_token);
+    });
+  })
+}
 ```
 
 ## A fazer
@@ -147,4 +148,4 @@ async createToken (){
 - [ ] Utilizar streams para processamento de dados, para um grande volume de dados
 - [ ] Criar IA para outros serviços de insights
 - [ ] Revisar paramento utilizado para definir apetite de risco (atualmente esta utilizando uma margem de 10% para mais e para menos)
-- [ ] Criar serviços para novas funcionalidades descritas na dinamica feita no sequenciador de features no README da home
+- [ ] Criar serviços para novas funcionalidades descritas na dinâmica feita no sequenciador de features no README da home
