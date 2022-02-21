@@ -1,4 +1,4 @@
-import { Flex, Image, useMediaQuery } from '@chakra-ui/react';
+import { Flex, Image, Text, useMediaQuery } from '@chakra-ui/react';
 import { useForm, FormProvider } from 'react-hook-form';
 
 import { Button } from '../components/Button';
@@ -7,11 +7,13 @@ import { Link } from '../components/Link';
 import { useAuth } from '../contexts/authContext';
 
 interface FormData {
+  name: string;
   email: string;
   password: string;
+  confirmPassword: string;
 }
 
-export function Login() {
+export function SingIn() {
   const { handleLogin } = useAuth();
 
   const [isLargerThan600] = useMediaQuery('(min-width: 600px)');
@@ -46,9 +48,18 @@ export function Login() {
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
             <Input
+              name="name"
+              label="Nome"
+              marginTop="8"
+              options={{
+                required: 'O nome é obrigatório',
+              }}
+            />
+
+            <Input
               name="email"
               label="E-mail"
-              marginTop="12"
+              marginTop="2"
               options={{
                 required: 'O e-mail é obrigatório',
                 pattern: {
@@ -63,14 +74,24 @@ export function Login() {
               name="password"
               label="Senha"
               type="password"
-              marginTop="4"
+              marginTop="2"
+              options={{
+                required: 'A senha é obrigatória',
+              }}
+            />
+
+            <Input
+              name="confirmPassword"
+              label="Confirm a senha"
+              type="password"
+              marginTop="2"
               options={{
                 required: 'A senha é obrigatória',
               }}
             />
 
             <Button
-              mt="8"
+              mt="4"
               isFullWidth
               type="submit"
               colorScheme="secondary"
@@ -80,25 +101,16 @@ export function Login() {
               Entrar
             </Button>
 
-            <Flex mt="2" align="center" direction="column">
+            <Flex mt="2" justify="center" gap="2">
+              <Text>Já tem conta?</Text>
               <Link
                 textDecor="underline"
                 color="blue.400"
                 fontSize="sm"
-                to="/sing-in"
+                to="/login"
                 _hover={{ color: 'blue.500' }}
               >
-                Cadastro
-              </Link>
-
-              <Link
-                textDecor="underline"
-                color="blue.400"
-                fontSize="sm"
-                to="/forgot"
-                _hover={{ color: 'blue.500' }}
-              >
-                Recuperar senha
+                Fazer Login.
               </Link>
             </Flex>
           </form>

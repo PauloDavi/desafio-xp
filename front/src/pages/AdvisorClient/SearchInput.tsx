@@ -1,5 +1,5 @@
 /* eslint-disable react/no-children-prop */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import {
   Box,
@@ -18,18 +18,28 @@ import { AiFillInfoCircle } from 'react-icons/ai';
 import { BiSearchAlt } from 'react-icons/bi';
 
 import { useDebounce } from '../../hooks/useDebounce';
+import { api } from '../../services/api';
 import { ClientProps } from './ClientProps';
 
 interface SearchInputProps {
-  clients: ClientProps[];
   onChange(client: ClientProps | undefined): void;
 }
 
-export function SearchInput({ clients, onChange }: SearchInputProps) {
+export function SearchInput({ onChange }: SearchInputProps) {
+  const [clients, setClients] = useState<ClientProps[]>([]);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [searchClient, setSearchClient] = useState('');
   const debouncedSearchClient = useDebounce(searchClient, 300);
   const [selectClientIndex, setSelectClientIndex] = useState<number>();
+
+  useEffect(() => {
+    api
+      .get('/open-finances', { params: { search: debouncedSearchClient } })
+      .then(({ data }) => {
+        setClients(data);
+      });
+  }, [debouncedSearchClient]);
 
   return (
     <Box

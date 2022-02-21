@@ -15,55 +15,35 @@ import {
   Tr,
   Th,
   Tbody,
-  Td,
 } from '@chakra-ui/react';
 
 import { Button } from '../../components/Button';
 import { Layout } from '../../components/Layout';
+import { api } from '../../services/api';
 import { ClientProps } from './ClientProps';
+import { DataBank } from './DataBank';
 import { SearchInput } from './SearchInput';
-
-const data = [
-  {
-    bank: 'Banco A',
-    score: 1,
-    startDate: '01/01/2020',
-    hasCreditCard: true,
-    investments: ['investimento 1'],
-    credits: ['credito 1'],
-  },
-  {
-    bank: 'Banco B',
-    score: 1,
-    startDate: '01/01/2020',
-    hasCreditCard: true,
-    investments: ['investimento 1'],
-    credits: ['credito 1'],
-  },
-  {
-    bank: 'XP',
-    score: 1,
-    startDate: '01/01/2020',
-    hasCreditCard: true,
-    investments: ['investimento 1'],
-    credits: ['credito 1'],
-  },
-];
+import { TableRows } from './TableRows';
 
 export function AdvisorClient() {
-  const [clients, setClients] = useState<ClientProps[]>([]);
+  const [availableServices, setAvailableServices] = useState<string[]>([]);
+  const [data, setData] = useState<DataBank[]>([]);
   const [selectClient, setSelectClient] = useState<ClientProps>();
 
   useEffect(() => {
-    setClients([
-      { name: 'fulano', cpf: '123456789' },
-      { name: 'beutrano', cpf: '123456783' },
-    ]);
-  }, []);
+    if (selectClient) {
+      api
+        .get(`/open-finances/${selectClient.name}`)
+        .then(({ data: { availableServices, banks } }) => {
+          setData(banks);
+          setAvailableServices(availableServices);
+        });
+    }
+  }, [selectClient]);
 
   return (
     <Layout navIsCloseable withoutPadding>
-      <Flex direction="column" alignItems="center">
+      <Flex direction="column">
         <Text
           mt="8"
           fontSize="2xl"
@@ -74,7 +54,7 @@ export function AdvisorClient() {
           CLIENTE
         </Text>
 
-        <SearchInput clients={clients} onChange={setSelectClient} />
+        <SearchInput onChange={setSelectClient} />
 
         {selectClient && (
           <>
@@ -169,10 +149,11 @@ export function AdvisorClient() {
               </Flex>
             </Box>
 
-            <Tabs mt="8" variant="unstyled" size="lg" w="full">
+            <Tabs mt="8" variant="unstyled" w="full">
               <TabList
-                px="8"
+                pl="8"
                 pt="2"
+                mb="8"
                 bg="primary.300"
                 borderBottom="4px"
                 borderColor="primary.500"
@@ -207,51 +188,61 @@ export function AdvisorClient() {
                 </Tab>
               </TabList>
               <TabPanels>
-                <TabPanel>
-                  <Flex mt="8" justify="center">
+                <TabPanel mx="auto" w="64rem">
+                  <Box px="4">
                     <Table variant="unstyled">
                       <Thead>
                         <Tr>
-                          <Th>Dados</Th>
+                          <Th
+                            borderLeft="4px"
+                            color="white"
+                            borderColor="primary.500"
+                          >
+                            Dados
+                          </Th>
                           {data.map(({ bank }) => (
-                            <Th key={bank}>{bank}</Th>
+                            <Th color="primary.500" key={bank}>
+                              {bank}
+                            </Th>
                           ))}
                         </Tr>
                       </Thead>
-                      <Tbody>
-                        <Tr>
-                          <Td>Perfil de Risco</Td>
-                          {data.map(({ bank }) => (
-                            <Td key={bank}>{bank}</Td>
-                          ))}
-                        </Tr>
-                        <Tr>
-                          <Td>Data de Abertura da Conta</Td>
-                          {data.map(({ bank }) => (
-                            <Td key={bank}>{bank}</Td>
-                          ))}
-                        </Tr>
-                        <Tr>
-                          <Td>Possui Cartão de Crédito</Td>
-                          {data.map(({ bank }) => (
-                            <Td key={bank}>{bank}</Td>
-                          ))}
-                        </Tr>
-                        <Tr>
-                          <Td>Investimentos no Banco</Td>
-                          {data.map(({ bank }) => (
-                            <Td key={bank}>{bank}</Td>
-                          ))}
-                        </Tr>
-                        <Tr>
-                          <Td>Linhas de Crédito</Td>
-                          {data.map(({ bank }) => (
-                            <Td key={bank}>{bank}</Td>
-                          ))}
-                        </Tr>
+                      <Tbody overflowX="hidden">
+                        {data && <TableRows data={data} />}
                       </Tbody>
                     </Table>
-                  </Flex>
+
+                    <Flex direction="column" mt="8" px="auto">
+                      <Text
+                        pl="4"
+                        borderLeft="4px"
+                        color="white"
+                        borderColor="primary.500"
+                      >
+                        Insights - Oportunidades de Negócio
+                      </Text>
+                      <Text pl="5" mt="2" color="primary.500">
+                        Confira quais produtos , com base no perfil de risco ,
+                        estão disponíveis para esse cliente na XP
+                      </Text>
+                    </Flex>
+
+                    <Flex direction="column" mt="8" px="auto">
+                      <Text
+                        pl="4"
+                        borderLeft="4px"
+                        color="white"
+                        borderColor="primary.500"
+                      >
+                        Produtos XP disponíveis
+                      </Text>
+                      {availableServices.map(service => (
+                        <Text key={service} pl="5" mt="2" color="primary.500">
+                          {service}
+                        </Text>
+                      ))}
+                    </Flex>
+                  </Box>
                 </TabPanel>
               </TabPanels>
             </Tabs>

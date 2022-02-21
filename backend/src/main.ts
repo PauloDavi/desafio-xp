@@ -7,8 +7,8 @@ import {
   DocumentBuilder,
   SwaggerDocumentOptions,
 } from '@nestjs/swagger';
-import * as compression from 'compression';
-import helmet from 'helmet';
+import * as compression from 'compression'
+import helmet from 'helmet'
 
 import { version } from '../package.json';
 import { AppModule } from './app.module';

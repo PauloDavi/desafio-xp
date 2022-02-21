@@ -5,6 +5,7 @@ import { AdvisorClient } from '../pages/AdvisorClient';
 import { Forgot } from '../pages/Forgot';
 import { Home } from '../pages/Home';
 import { Login } from '../pages/Login';
+import { SingIn } from '../pages/SingIn';
 import { AuthRouter } from './AuthRouter';
 
 export function Routes() {
@@ -14,6 +15,10 @@ export function Routes() {
       <Route
         path="/login"
         element={<AuthRouter isPublic element={<Login />} />}
+      />
+      <Route
+        path="/sing-in"
+        element={<AuthRouter isPublic element={<SingIn />} />}
       />
       <Route
         path="/forgot"

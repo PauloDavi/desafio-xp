@@ -13,6 +13,7 @@ import { mongoosePagination } from 'mongoose-paginate-ts';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { OpenFinancesModule } from './modules/open-finances/open-finances.module';
 
 @Module({
   imports: [
@@ -47,6 +48,7 @@ import { AppService } from './app.service';
     }),
     AuthModule,
     UsersModule,
+    OpenFinancesModule,
   ],
   controllers: [AppController],
   providers: [
