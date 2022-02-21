@@ -45,4 +45,5 @@ npm run dev
 - [ ] Melhorar UX/UI
 - [ ] Adicionar funcionalidade a alguns botões e banners que atualmente são somentes visuais
 - [ ] Ocultar informação do usuário na pesquisa de perfil até que selecione a ação
+- [ ] Criar experiência do usuário para features definidas na dinâmica "Sequenciador de features" no README da home.
 
