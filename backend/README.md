@@ -57,7 +57,7 @@ A documentação do swagger esta disponivel em `http://localhost:<PORT>/api`
 
 ## Observações
 - Presumimos que o aceite do usuário quanto ao seus dados para o open finance foram dado previamente em algum ambiente XP
-- Devido a um bloqueio da API disponibilizada para consumo foi necessário "mockar" os dados de usuários e de serviços da XP, seguem os testes realizados e o retorno da API em todos os testes
+- Devido a um bloqueio da API disponibilizada para consumo foi necessário "mockar" os dados de usuários e de serviços da XP, que são exatamente os mesmos valores default da API XP disponibilizada. Seguem os testes realizados e o retorno da API em todos os testes
 
 Retorno do Erro
 ```html
