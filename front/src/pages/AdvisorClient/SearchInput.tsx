@@ -16,10 +16,12 @@ import {
 } from '@chakra-ui/react';
 import { AiFillInfoCircle } from 'react-icons/ai';
 import { BiSearchAlt } from 'react-icons/bi';
+import { conformToMask } from 'vanilla-text-mask';
 
 import { useDebounce } from '../../hooks/useDebounce';
 import { api } from '../../services/api';
 import { ClientProps } from './ClientProps';
+import { cpfMask } from './cpfMask';
 
 interface SearchInputProps {
   onChange(client: ClientProps | undefined): void;
@@ -31,7 +33,7 @@ export function SearchInput({ onChange }: SearchInputProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [searchClient, setSearchClient] = useState('');
   const debouncedSearchClient = useDebounce(searchClient, 300);
-  const [selectClientIndex, setSelectClientIndex] = useState<number>();
+  const [selectClientName, setSelectClientName] = useState<string>();
 
   useEffect(() => {
     api
@@ -89,22 +91,30 @@ export function SearchInput({ onChange }: SearchInputProps) {
                 fontSize="28"
                 arial-label="search"
                 mt="2"
+                mr="4"
               />
             }
           />
         </Tooltip>
       </InputGroup>
 
-      <Box position="relative">
+      <Box position="relative" zIndex="modal">
         {isOpen && (
-          <Box position="absolute" top="2" mx="1rem" w="calc(100% - 2rem)">
+          <Box
+            position="absolute"
+            maxH="52"
+            overflowY="scroll"
+            top="2"
+            mx="1rem"
+            w="calc(100% - 2rem)"
+          >
             <List
               bg="white"
               borderRadius="4px"
               border={isOpen ? '1px solid rgba(0,0,0,0.1)' : 'none'}
               boxShadow="6px 5px 8px rgba(0,50,30,0.02)"
             >
-              {clients.length > 0 &&
+              {clients.length > 0 ? (
                 clients.map((item, index) => (
                   <>
                     {index !== 0 && <Divider />}
@@ -113,7 +123,7 @@ export function SearchInput({ onChange }: SearchInputProps) {
                       py="2"
                       borderBottom="1px solid rgba(0,0,0,0.01)"
                       bg={
-                        index === selectClientIndex
+                        item.name === selectClientName
                           ? 'rgba(0,0,0,0.05)'
                           : 'inherit'
                       }
@@ -122,21 +132,29 @@ export function SearchInput({ onChange }: SearchInputProps) {
                         backgroundColor: 'rgba(0,0,0,0.05)',
                       }}
                       onClick={() => {
-                        if (index === selectClientIndex) {
+                        if (item.name === selectClientName) {
                           onChange(undefined);
-                          setSelectClientIndex(undefined);
-                          setSearchClient('');
+                          setSelectClientName(undefined);
                         } else {
                           onChange(item);
-                          setSelectClientIndex(index);
-                          setSearchClient(`${item.name} - ${item.cpf}`);
+                          setSelectClientName(item.name);
                         }
+                        setSearchClient('');
                         onClose();
                       }}
                       key={item.name}
-                    >{`${item.name} - ${item.cpf}`}</ListItem>
+                    >{`${item.name} - ${
+                      conformToMask(item.cpf, cpfMask, {
+                        guide: false,
+                      }).conformedValue
+                    }`}</ListItem>
                   </>
-                ))}
+                ))
+              ) : (
+                <ListItem px="4" py="2">
+                  Nenhum, usuários encontrado
+                </ListItem>
+              )}
             </List>
           </Box>
         )}

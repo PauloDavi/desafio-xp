@@ -16,7 +16,7 @@ Depois de clonar o repositório instale as dependências
 ```
 yarn
 
-// or if you use npm
+// with npm
 
 npm install
 
@@ -34,16 +34,19 @@ Depois execute:
 ```
 yarn dev
 
-// or if you use npm
+// with npm
 
 npm run dev
 
 ```
 
+Com a aplicação funcionando basta fazer login utilizar um email válido e uma senha qualquer.
+
 ## A fazer
 - [ ] Criar serviço de email para recuperação de senha
+- [ ] Utilizar API para login e na criação de usuário, que apesar da API ter essas funcionalidades elas não foram utilizadas aqui para facilitar testes e não depender de um banco de dados.
 - [ ] Melhorar UX/UI
-- [ ] Adicionar funcionalidade a alguns botões e banners que atualmente são somentes visuais
+- [ ] Adicionar funcionalidade a alguns botões e banners que atualmente são somente visuais
 - [ ] Ocultar informação do usuário na pesquisa de perfil até que selecione a ação
 - [ ] Criar experiência do usuário para features definidas na dinâmica "Sequenciador de features" no README da home.
 

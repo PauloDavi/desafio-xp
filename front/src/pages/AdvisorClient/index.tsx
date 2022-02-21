@@ -16,11 +16,13 @@ import {
   Th,
   Tbody,
 } from '@chakra-ui/react';
+import { conformToMask } from 'vanilla-text-mask';
 
 import { Button } from '../../components/Button';
 import { Layout } from '../../components/Layout';
 import { api } from '../../services/api';
 import { ClientProps } from './ClientProps';
+import { cpfMask } from './cpfMask';
 import { DataBank } from './DataBank';
 import { SearchInput } from './SearchInput';
 import { TableRows } from './TableRows';
@@ -99,7 +101,11 @@ export function AdvisorClient() {
                     <Text as="span" mt="4">
                       CPF:{' '}
                       <Text as="span" fontWeight="normal">
-                        {selectClient.cpf}
+                        {
+                          conformToMask(selectClient.cpf, cpfMask, {
+                            guide: false,
+                          }).conformedValue
+                        }
                       </Text>
                     </Text>
                   </Flex>
@@ -120,7 +126,7 @@ export function AdvisorClient() {
                       color="black"
                       rounded="none"
                     >
-                      Análise de Concorrentes
+                      Análise Concorrentes
                     </Button>
                     <Button
                       disabled
@@ -164,7 +170,7 @@ export function AdvisorClient() {
                     color: 'white',
                   }}
                 >
-                  Análise de Concorrentes
+                  Análise Concorrentes
                 </Tab>
                 <Tab
                   isDisabled
